@@ -12,6 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   @include breakpoints(mobile){
+    width:95%;
     margin: 20px auto;
 }
 

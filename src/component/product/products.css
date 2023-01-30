@@ -6,6 +6,7 @@
 }
 @media (max-width: 940px) {
   .products-container {
+    width: 95%;
     margin: 20px auto;
   }
 }
