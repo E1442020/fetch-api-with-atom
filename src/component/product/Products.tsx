@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { productAtom } from "../atom/atom";
 import ProductItem from "./ProductItem";
 import "./products.css";
@@ -13,11 +13,15 @@ import "./products.css";
 export default function Products() {
   // const [products,setProducts]=useState<Provider[]>([])
   const [products, setProducts] = productAtom.useState();
+  const [loading,setLoading]=useState(false)
 
   useEffect(() => {
+    setLoading(true)
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) =>{ setProducts(data);
+                       setLoading(false)}
+        );
   }, []);
   // console.log(products);
 
@@ -28,6 +32,7 @@ export default function Products() {
   return (
     <>
       <div className="products-container">
+        {loading&& <h3>loading...</h3>}
         {products.map((product, index): ReactNode => {
           return (
             <>

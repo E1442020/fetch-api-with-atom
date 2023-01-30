@@ -10,7 +10,7 @@ export const productAtom= atom<Provider>({
   key: "product",
   default: [{
     title:'',
-    price:1,
+    price:0,
     image:'',
     description:'',
     id:null
