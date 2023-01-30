@@ -3,15 +3,8 @@ import { productAtom } from "../atom/atom";
 import ProductItem from "./ProductItem";
 import "./products.css";
 
-// interface Provider {
-//  title:string,
-//  price:number,
-//  description:string,
-//  image:string,
-//  id: Key | null | undefined
-// }
+
 export default function Products() {
-  // const [products,setProducts]=useState<Provider[]>([])
   const [products, setProducts] = productAtom.useState();
   const [loading,setLoading]=useState(false)
 
@@ -23,16 +16,12 @@ export default function Products() {
                        setLoading(false)}
         );
   }, []);
-  // console.log(products);
-
-  // const removeItem = (itemIndex: number) => {
-  //   productAtom.removeItem(itemIndex);
-  // };
+  
 
   return (
     <>
       <div className="products-container">
-        {loading&& <h3>loading...</h3>}
+        {loading? <h3>loading...</h3>:<>
         {products.map((product, index): ReactNode => {
           return (
             <>
@@ -46,7 +35,7 @@ export default function Products() {
               />
             </>
           );
-        })}
+        })}</>}
       </div>
     </>
   );
